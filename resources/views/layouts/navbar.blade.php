@@ -8,7 +8,7 @@
     </ul>
 
     <!-- Enlaces del Navbar Derecha -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto mr-3">
         <li class="nav-item">
             <form action="{{ route('auth.logout') }}" method="POST">
                 @csrf

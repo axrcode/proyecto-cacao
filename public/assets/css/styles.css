@@ -1,1 +1,13 @@
+.subir{
+    padding: 5px 10px;
+    background: #1b2d9d;
+    color:#fff;
+    border:0px solid #fff;
+    transition: all .3s;
+}
 
+.subir:hover{
+    color:#fff;
+    background: #253abd;
+    transition: all .3s;
+}

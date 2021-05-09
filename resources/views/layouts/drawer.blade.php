@@ -43,53 +43,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-info-circle"></i>
+                    <a href="{{ route('empresa.index') }}" class="nav-link {{ active( route('empresa.index') ) }}">
+                        <i class="nav-icon fas fa-building"></i>
                         <p>
-                            Detalles de Información
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item"> {{-- menu-open --}}
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-globe"></i>
-                        <p>
-                            Páginas Sitio Web
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                {{-- <i class="fas fa-caret-right nav-icon"></i> --}}
-                                <p class="ml-5">Pantalla - Inicio</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                {{-- <i class="fas fa-caret-right nav-icon"></i> --}}
-                                <p class="ml-5">Pantalla - Nosotros</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                {{-- <i class="fas fa-caret-right nav-icon"></i> --}}
-                                <p class="ml-5">Pantalla - Servicios</p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="nav-header">Administración</li>
-
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-user-friends"></i>
-                        <p>
-                            Inscripciones
+                            Empresas
                         </p>
                     </a>
                 </li>

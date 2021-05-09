@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -19,6 +21,9 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('dashboard');
+        $totalEmpresas = Empresa::count();
+        $totalEmpleados = Empleado::count();
+
+        return view('dashboard', compact('totalEmpresas', 'totalEmpleados'));
     }
 }
