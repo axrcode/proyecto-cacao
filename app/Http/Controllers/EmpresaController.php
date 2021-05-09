@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
 use App\Models\Empresa;
 use Illuminate\Http\Request;
 
@@ -47,18 +48,29 @@ class EmpresaController extends Controller
             'email' => 'required|string',
             'direccion' => 'required|string',
             'website' => 'required|string',
-            'logo' => 'required|image',
+            'logo' => 'required|image|dimensions:min_width=150,min_height=150',
         ]);
+
+        //$rutaImagen = $request['logo']->store('empresas', 'public');
+        $logo = $request->file('logo');
+        $nombreLogo = time() . '.' . $logo->extension();
+        $logo->move(public_path('storage/empresas'), $nombreLogo);
 
         Empresa::create([
             'nombre' => $request->nombre,
             'email' => $request->email,
             'direccion' => $request->direccion,
             'website' => $request->website,
-            'logo' => '/miruta'
+            'logo' => "/storage/empresas/$nombreLogo",
         ]);
 
-        return redirect()->route('empresa.index');
+        return redirect()
+            ->route('empresa.index')
+            ->with('create_result', [
+                'status' => 'success',
+                'content' => 'Empresa creada correctamente'
+            ])
+        ;
     }
 
     /**
@@ -97,7 +109,17 @@ class EmpresaController extends Controller
             'email' => 'required|string',
             'direccion' => 'required|string',
             'website' => 'required|string',
+            'logo' => 'image|dimensions:min_width=150,min_height=150',
         ]);
+
+        if (!empty($request->logo))
+        {
+            $logo = $request->file('logo');
+            $nombreLogo = time() . '.' . $logo->extension();
+            $logo->move(public_path('storage/empresas'), $nombreLogo);
+
+            $empresa->logo = "/storage/empresas/$nombreLogo";
+        }
 
         $empresa->nombre = $request->nombre;
         $empresa->email = $request->email;
@@ -106,7 +128,13 @@ class EmpresaController extends Controller
 
         $empresa->save();
 
-        return redirect()->route('empresa.show', $empresa->id);
+        return redirect()
+            ->route('empresa.show', $empresa->id)
+            ->with('process_result', [
+                'status' => 'success',
+                'content' => 'Empresa actualizada correctamente'
+            ])
+        ;
     }
 
     /**
@@ -117,6 +145,25 @@ class EmpresaController extends Controller
      */
     public function destroy(Empresa $empresa)
     {
-        //
+        $empleadosConectados = Empleado::where('empresa_id', $empresa->id)->get();
+
+        $status = 'error';
+        $content = 'Esta empresa tiene empleados conectados';
+
+        if (sizeof($empleadosConectados) == 0)
+        {
+            $status = 'success';
+            $content = 'Empresa eliminada correctamente';
+
+            $empresa->delete();
+        }
+
+        return redirect()
+            ->route('empresa.index')
+            ->with('process_result', [
+                'status' => $status,
+                'content' => $content
+            ])
+        ;
     }
 }

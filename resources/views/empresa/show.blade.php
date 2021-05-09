@@ -4,6 +4,9 @@
 
     <title>{{ $empresa->nombre }} | Proyecto Cacao</title>
 
+    <!-- Toastr -->
+    <link rel="stylesheet" href="/assets/adminlte/plugins/toastr/toastr.min.css">
+
 @endsection
 
 @section('content')
@@ -46,7 +49,10 @@
                             <div class="card-body text-left">
                                 <div class="row">
                                     <div class="col-12 col-md-4 text-center ">
-                                        <img src="/assets/adminlte/img/avatar2.png" class="img-thumbnail mb-2 shadow-sm">
+                                        <img
+                                            src="@if ($empresa->logo == null) /assets/img/error.png @else {{ $empresa->logo }} @endif"
+                                            class="img-thumbnail mb-2 shadow-sm w-100"
+                                        >
                                     </div>
                                     <div class="col-12 col-md-8 ">
                                         <h2 class="lead mb-4">
@@ -70,7 +76,7 @@
                                                 <span class="fa-li">
                                                     <i class="fas fa-lg fa-globe mr-3"></i>
                                                 </span>
-                                                <a href="{{ $empresa->website }}" target="_blank">
+                                                <a href="https://{{ $empresa->website }}" target="_blank">
                                                     {{ $empresa->website }}
                                                 </a>
                                             </li>
@@ -109,11 +115,15 @@
 
 @section('js')
 
-    <script>
-        function cambiar(){
-            var pdrs = document.getElementById('file-upload').files[0].name;
-            document.getElementById('info').innerHTML = pdrs;
-        }
-    </script>
+    <!-- Toastr -->
+    <script src="/assets/adminlte/plugins/toastr/toastr.min.js"></script>
+
+    @if ( session()->has('process_result') )
+        <script>
+            $(function() {
+                toastr.{{ session('process_result')['status'] }}('{{ session('process_result')['content'] }}')
+            });
+        </script>
+    @endif
 
 @endsection

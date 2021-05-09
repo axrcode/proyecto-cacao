@@ -162,12 +162,26 @@
                                             </div>
                                         </div>
 
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-6 col-md-2 px-3 text-center">
+                                                    <img
+                                                        src="@if ($empresa->logo == null) /assets/img/error.png @else {{ $empresa->logo }} @endif"
+                                                        class="img-thumbnail mb-2 shadow-sm w-100"
+                                                    >
+                                                    <p class="font-weight-bold mt-n2">
+                                                        Logo Actual
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="col-12 pt-3">
                                             <div class="row">
                                                 <div class="col-12 offset-md-8 col-md-4 px-3">
                                                     <button type="submit" class="btn btn-success btn-sm btn-block">
                                                         <i class="fas fa-save mr-2"></i>
-                                                        Guardar
+                                                        Guardar Cambios
                                                     </button>
                                                 </div>
                                             </div>

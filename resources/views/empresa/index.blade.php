@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="/assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="/assets/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="/assets/adminlte/plugins/toastr/toastr.min.css">
 
 @endsection
 
@@ -43,6 +45,9 @@
                             Crear Nueva Empresa
                         </a>
                     </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -73,9 +78,14 @@
                                             <tr>
                                                 <td>{{ $empresa->nombre }}</td>
                                                 <td>{{ $empresa->email }}</td>
-                                                <td>{{ $empresa->logo }}</td>
+                                                <td class="text-center">
+                                                    <img src="@if ($empresa->logo == null) /assets/img/error.png @else {{ $empresa->logo }} @endif"
+                                                        alt="Logo Empresa"
+                                                        class="img-size-32"
+                                                    >
+                                                </td>
                                                 <td>
-                                                    <a href="{{ $empresa->website }}" target="_blank">
+                                                    <a href="https://{{ $empresa->website }}" target="_blank">
                                                         {{ $empresa->website }}
                                                     </a>
                                                 </td>
@@ -97,7 +107,7 @@
                                                             </button>
 
                                                             <!-- MODAL DELETE -->
-                                                            <form action="{{ route('empresa.index', $empresa->id) }}" method="POST">
+                                                            <form action="{{ route('empresa.destroy', $empresa->id) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
 
@@ -107,7 +117,7 @@
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title" id="exampleModalLabel">
                                                                                     <i class="fas fa-trash-alt"></i>
-                                                                                    Eliminar Inscripción
+                                                                                    Eliminar Empresa
                                                                                 </h5>
                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                     <span aria-hidden="true">&times;</span>
@@ -117,9 +127,9 @@
                                                                                 <div class="row">
                                                                                     <div class="col-12">
                                                                                         <p>
-                                                                                            ¿ Está seguro de elimnar la inscripción de
+                                                                                            ¿ Está seguro de eliminar la empresa
                                                                                             <span class="font-weight-bold">
-                                                                                                {{ $empresa->nombre }} {{ $empresa->apellidos }}
+                                                                                                {{ $empresa->nombre }}
                                                                                             </span>
                                                                                             ?
                                                                                         </p>
@@ -176,35 +186,25 @@
     <script src="/assets/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="/assets/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-    <script>
-        $(function () {
-            $("#empresas").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "language": {
-                    "decimal": "",
-                    "emptyTable": "No hay información",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                    "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
-                    "infoFiltered": "(Filtrado de _MAX_ entradas en total)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ Entradas",
-                    "loadingRecords": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "zeroRecords": "Sin resultados encontrados",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Ultimo",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    }
-                },
-                "buttons": ["excel", "pdf", "print"]
-            }).buttons().container().appendTo('#empresas_wrapper .col-md-6:eq(0)');
-        });
-    </script>
+    <script src="/assets/js/datatable-empresas.js"></script>
+
+    <!-- Toastr -->
+    <script src="/assets/adminlte/plugins/toastr/toastr.min.js"></script>
+
+    @if ( session()->has('process_result') )
+        <script>
+            $(function() {
+                toastr.{{ session('process_result')['status'] }}('{{ session('process_result')['content'] }}')
+            });
+        </script>
+    @endif
+
+    @if ( session()->has('create_result') )
+        <script>
+            $(function() {
+                toastr.{{ session('create_result')['status'] }}('{{ session('create_result')['content'] }}')
+            });
+        </script>
+    @endif
 
 @endsection
