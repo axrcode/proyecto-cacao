@@ -4,9 +4,6 @@
 
     <title>{{ $personaje['name'] }} | Proyecto Cacao</title>
 
-    <!-- Toastr -->
-    <link rel="stylesheet" href="/assets/adminlte/plugins/toastr/toastr.min.css">
-
 @endsection
 
 @section('content')
@@ -223,33 +220,6 @@
 
                                         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     </div>
 
                                 </div>
@@ -269,28 +239,5 @@
     @include('layouts.mainfooter')
 
 </div>
-
-@endsection
-
-@section('js')
-
-    <!-- Toastr -->
-    <script src="/assets/adminlte/plugins/toastr/toastr.min.js"></script>
-
-    @if ( session()->has('process_result') )
-        <script>
-            $(function() {
-                toastr.{{ session('process_result')['status'] }}('{{ session('process_result')['content'] }}')
-            });
-        </script>
-    @endif
-
-    @if ( session()->has('create_result') )
-        <script>
-            $(function() {
-                toastr.{{ session('create_result')['status'] }}('{{ session('create_result')['content'] }}')
-            });
-        </script>
-    @endif
 
 @endsection
