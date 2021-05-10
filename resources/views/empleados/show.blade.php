@@ -79,12 +79,29 @@
 
                             <div class="card-footer text-left">
                                 <div class="row">
-                                    <div class="offset-md-8 col-md-4">
+                                    <div class="offset-md-4 col-md-4 mb-2 mb-md-0">
                                         <a  href="{{ route('empleado.edit', $empleado->id) }}"
                                             class="btn btn-secondary btn-xs btn-block">
                                             <i class="fas fa-edit mr-2"></i>
                                             Editar Empleado
                                         </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        @if ($gestionar_usuario == true)
+                                            <form action="{{ route('usuario.store') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="empleado" value="{{ $empleado->id }}">
+                                                <button type="submit" class="btn btn-info btn-xs btn-block">
+                                                    <i class="fas fa-user-cog mr-2"></i>
+                                                    Generar Usuario
+                                                </button>
+                                            </form>
+                                        @else
+                                            <a href="{{ route('usuario.show', $usuario->id) }}" class="btn btn-info btn-xs btn-block">
+                                                <i class="fas fa-user-cog mr-2"></i>
+                                                Gestionar Usuario
+                                            </a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

@@ -40,8 +40,11 @@ Route::get('/empleados/{empleado}/edit', 'EmpleadoController@edit')->name('emple
 Route::put('/empleados/{empleado}', 'EmpleadoController@update')->name('empleado.update');
 Route::delete('/empleados/{empleado}', 'EmpleadoController@destroy')->name('empleado.destroy');
 
-
-
+/* USUARIOS */
+Route::post('/usuarios', 'UsuarioController@store')->name('usuario.store');
+Route::get('/usuarios/{user}', 'UsuarioController@show')->name('usuario.show');
+Route::put('/usuarios/{user}', 'UsuarioController@update')->name('usuario.update');
+Route::delete('/usuarios/{user}', 'UsuarioController@destroy')->name('usuario.destroy');
 
 
 

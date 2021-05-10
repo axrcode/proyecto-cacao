@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use App\Models\Empresa;
+use App\User;
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
@@ -78,7 +79,15 @@ class EmpleadoController extends Controller
      */
     public function show(Empleado $empleado)
     {
-        return view('empleados.show', compact('empleado'));
+        $usuario = User::where('email', $empleado->email)->first();
+
+        if ($usuario) {
+            $gestionar_usuario = false;
+        } else {
+            $gestionar_usuario = true;
+        }
+
+        return view('empleados.show', compact('empleado', 'gestionar_usuario', 'usuario'));
     }
 
     /**
@@ -110,6 +119,16 @@ class EmpleadoController extends Controller
             'telefono' => 'required|string',
             'empresa' => 'required'
         ]);
+
+        $usuario = User::where('email', $empleado->email)->first();
+
+        if ($usuario)
+        {
+            $usuario->name = $request->nombre . ' ' . $request->apellido;
+            $usuario->email = $request->email;
+
+            $usuario->save();
+        }
 
         $empleado->nombre = $request->nombre;
         $empleado->apellido = $request->apellido;

@@ -60,6 +60,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('heroes.index') }}" class="nav-link {{ active( route('heroes.index') ) }}">
+                        <i class="nav-icon fas fa-user-tie"></i>
+                        <p>
+                            Héroes
+                        </p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
     </div>
