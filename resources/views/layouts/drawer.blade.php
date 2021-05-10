@@ -51,6 +51,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('empleado.index') }}" class="nav-link {{ active( route('empleado.index') ) }}">
+                        <i class="nav-icon fas fa-user-tie"></i>
+                        <p>
+                            Empleados
+                        </p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
     </div>

@@ -15,139 +15,19 @@ class EmpresaSeeder extends Seeder
         DB::table('empresas')->insert([
             'nombre' => 'Colegio Blaise Pascal',
             'email' => 'info@cbp.edu.gt',
-            'logo' => '/storage/empresas/1620546210.png',
-            'website' => 'https://cbp.edu.gt',
+            'logo' => '',
+            'website' => 'cbp.edu.gt',
             'direccion' => 'Mazatenango',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
         DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
+            'nombre' => 'Claro Guatemala',
+            'email' => 'info@claro.com.gt',
             'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('empresas')->insert([
-            'nombre' => 'aaa',
-            'email' => 'aaa',
-            'logo' => '',
-            'website' => 'aaa',
-            'direccion' => 'aaa',
+            'website' => 'claro.com.gt',
+            'direccion' => 'Guatemala',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);

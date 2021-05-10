@@ -2,7 +2,7 @@
 
 @section('head')
 
-    <title>Empresas | Proyecto Cacao</title>
+    <title>Empleados | Proyecto Cacao</title>
 
     <!-- DataTables -->
     <link rel="stylesheet" href="/assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -33,16 +33,16 @@
                 <div class="row my-2">
                     <div class="col-12">
                         <h1 class="ml-2">
-                            <i class="fas fa-building mr-2"></i>
-                            Empresas
+                            <i class="fas fa-user-tie mr-2"></i>
+                            Empleados
                         </h1>
                     </div>
 
                     <div class="col-12 col-md-3 pt-3">
-                        <a  href="{{ route('empresa.create') }}"
+                        <a  href="{{ route('empleado.create') }}"
                             class="btn btn-info btn-block btn-xs px-5">
                             <i class="fas fa-plus-square mr-2"></i>
-                            Crear Nueva Empresa
+                            Crear Nueva Empleado
                         </a>
                     </div>
 
@@ -62,39 +62,27 @@
                         <div class="card card-outline card-dark">
 
                             <div class="card-body">
-                                <table id="empresas" class="table table-bordered compact">
+                                <table id="empleados" class="table table-bordered compact">
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Email</th>
-                                            <th>Logotipo</th>
-                                            <th>Sitio Web</th>
-                                            <th>Dirección</th>
+                                            <th>Teléfono</th>
+                                            <th>Empresa</th>
                                             <th style="width:10%"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($empresas as $empresa)
+                                        @foreach ($empleados as $empleado)
                                             <tr>
-                                                <td>{{ $empresa->nombre }}</td>
-                                                <td>{{ $empresa->email }}</td>
-                                                <td class="text-center">
-                                                    <img src="@if ($empresa->logo == null) /assets/img/error.png @else {{ $empresa->logo }} @endif"
-                                                        alt="Logo Empresa"
-                                                        class="img-size-32"
-                                                    >
-                                                </td>
-                                                <td>
-                                                    <a href="https://{{ $empresa->website }}" target="_blank">
-                                                        {{ $empresa->website }}
-                                                    </a>
-                                                </td>
-                                                <td>{{ $empresa->direccion }}</td>
-                                                {{-- <td class="bg-light"><b>{{ $empresa->curso->nombre }}</b></td> --}}
+                                                <td>{{ $empleado->nombre }} {{ $empleado->apellido }}</td>
+                                                <td>{{ $empleado->email }}</td>
+                                                <td>{{ $empleado->telefono }}</td>
+                                                <td>{{ $empleado->empresa->nombre }}</td>
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-6 px-1">
-                                                            <a  href="{{ route('empresa.show', $empresa->id) }}"
+                                                            <a  href="{{ route('empleado.show', $empleado->id) }}"
                                                                 class="btn btn-block btn-success btn-xs">
                                                                 <i class="fas fa-file-alt"></i>
                                                             </a>
@@ -102,22 +90,22 @@
                                                         <div class="col-6 px-1">
                                                             <button
                                                                 type="button" class="btn btn-block btn-danger btn-xs"
-                                                                data-toggle="modal" data-target="#delete-{{ $empresa->id }}">
+                                                                data-toggle="modal" data-target="#delete-{{ $empleado->id }}">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </button>
 
                                                             <!-- MODAL DELETE -->
-                                                            <form action="{{ route('empresa.destroy', $empresa->id) }}" method="POST">
+                                                            <form action="{{ route('empleado.destroy', $empleado->id) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
 
-                                                                <div class="modal fade" id="delete-{{ $empresa->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal fade" id="delete-{{ $empleado->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-centered">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title" id="exampleModalLabel">
                                                                                     <i class="fas fa-trash-alt"></i>
-                                                                                    Eliminar Empresa
+                                                                                    Eliminar Empleado
                                                                                 </h5>
                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                     <span aria-hidden="true">&times;</span>
@@ -127,9 +115,9 @@
                                                                                 <div class="row">
                                                                                     <div class="col-12">
                                                                                         <p>
-                                                                                            ¿ Está seguro de eliminar la empresa
+                                                                                            ¿ Está seguro de eliminar a
                                                                                             <span class="font-weight-bold">
-                                                                                                {{ $empresa->nombre }}
+                                                                                                {{ $empleado->nombre }} {{ $empleado->apellido }}
                                                                                             </span>
                                                                                             ?
                                                                                         </p>
@@ -188,7 +176,7 @@
 
     <script>
         $(function () {
-            $("#empresas").DataTable({
+            $("#empleados").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
@@ -243,7 +231,7 @@
                 ]
             })
             @if (auth()->user()->rol->descripcion == 'administrador')
-                .buttons().container().appendTo('#empresas_wrapper .col-md-6:eq(0)');
+                .buttons().container().appendTo('#empleados_wrapper .col-md-6:eq(0)');
             @endif
         });
     </script>

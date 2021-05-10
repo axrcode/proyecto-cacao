@@ -32,13 +32,13 @@ Route::put('/empresas/{empresa}', 'EmpresaController@update')->name('empresa.upd
 Route::delete('/empresas/{empresa}', 'EmpresaController@destroy')->name('empresa.destroy');
 
 /* EMPLEADOS */
-Route::get('/empleados', 'EmpresaController@index')->name('empleado.index');
-Route::get('/empleados/create', 'EmpresaController@create')->name('empleado.create');
-Route::post('/empleados', 'EmpresaController@store')->name('empleado.store');
-Route::get('/empleados/{empleado}', 'EmpresaController@show')->name('empleado.show');
-Route::get('/empleados/{empleado}/edit', 'EmpresaController@edit')->name('empleado.edit');
-Route::put('/empleados/{empleado}', 'EmpresaController@update')->name('empleado.update');
-Route::delete('/empleados/{empleado}', 'EmpresaController@destroy')->name('empleado.destroy');
+Route::get('/empleados', 'EmpleadoController@index')->name('empleado.index');
+Route::get('/empleados/create', 'EmpleadoController@create')->name('empleado.create');
+Route::post('/empleados', 'EmpleadoController@store')->name('empleado.store');
+Route::get('/empleados/{empleado}', 'EmpleadoController@show')->name('empleado.show');
+Route::get('/empleados/{empleado}/edit', 'EmpleadoController@edit')->name('empleado.edit');
+Route::put('/empleados/{empleado}', 'EmpleadoController@update')->name('empleado.update');
+Route::delete('/empleados/{empleado}', 'EmpleadoController@destroy')->name('empleado.destroy');
 
 
 
