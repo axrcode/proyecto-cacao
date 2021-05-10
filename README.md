@@ -5,6 +5,7 @@
 Proyecto para prueba práctica de Cacao.gt. Sistema para gestionar empresas y sus empleados. Proyecto realizado con Framework de PHP, Laravel. Para dicho sistema sera necesario ejecutar los siguiente elementos con php artisan:
 
 - Configurar el archivo .env
+- Conectar con Mailtrap para las notificaciones
 - Ejecutar las dependencias de composer
 - Migrations
 - Seeders
