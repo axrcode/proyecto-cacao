@@ -46,6 +46,9 @@ Route::get('/usuarios/{user}', 'UsuarioController@show')->name('usuario.show');
 Route::put('/usuarios/{user}', 'UsuarioController@update')->name('usuario.update');
 Route::delete('/usuarios/{user}', 'UsuarioController@destroy')->name('usuario.destroy');
 
+/* HEROES */
+Route::get('/heroes', 'HeroController@index')->name('heroes.index');
+Route::get('/heroes/{hero}', 'HeroController@show')->name('heroes.show');
 
 
 

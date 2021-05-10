@@ -62,7 +62,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('heroes.index') }}" class="nav-link {{ active( route('heroes.index') ) }}">
-                        <i class="nav-icon fas fa-user-tie"></i>
+                        <i class="nav-icon fas fa-mask"></i>
                         <p>
                             Héroes
                         </p>

@@ -3,9 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Prophecy\Doubler\Generator\Node\ReturnTypeNode;
 
 class HeroController extends Controller
 {
+    public $base = 'https://www.superheroapi.com/api.php/2085887344887263/';
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +22,16 @@ class HeroController extends Controller
      */
     public function index()
     {
-        //
+        $flash = Http::get($this->base.'265');
+        $superman = Http::get($this->base.'644');
+        $spiderman = Http::get($this->base.'620');
+        $drmanhatan = Http::get($this->base.'156');
+        $captainamerica = Http::get($this->base.'149');
+        $scarletwitch = Http::get($this->base.'579');
+        $thanos = Http::get($this->base.'655');
+        $mephisto = Http::get($this->base.'443');
+
+        return view('heroes.index', compact('flash', 'superman', 'spiderman', 'drmanhatan', 'captainamerica', 'scarletwitch', 'thanos', 'mephisto'));
     }
 
     /**
@@ -43,9 +61,11 @@ class HeroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($hero)
     {
-        //
+        $personaje = Http::get($this->base.$hero);
+
+        return view('heroes.show', compact('personaje'));
     }
 
     /**
