@@ -56,7 +56,7 @@ class EmpresaController extends Controller
         $nombreLogo = time() . '.' . $logo->extension();
         $logo->move(public_path('storage/empresas'), $nombreLogo);
 
-        Empresa::create([
+        $empresa = Empresa::create([
             'nombre' => $request->nombre,
             'email' => $request->email,
             'direccion' => $request->direccion,
@@ -65,8 +65,8 @@ class EmpresaController extends Controller
         ]);
 
         return redirect()
-            ->route('empresa.index')
-            ->with('create_result', [
+            ->route('empresa.show', $empresa->id)
+            ->with('process_result', [
                 'status' => 'success',
                 'content' => 'Empresa creada correctamente'
             ])

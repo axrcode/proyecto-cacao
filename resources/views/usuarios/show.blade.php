@@ -99,6 +99,21 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input
+                                                    type="checkbox"
+                                                    class="form-check-input"
+                                                    id="notificaciones"
+                                                    name="notificaciones"
+                                                    @if ($user->notificaciones == true) checked @endif
+                                                >
+                                                <label for="notificaciones" class="form-check-label">
+                                                    Enviar Notificaciones
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 

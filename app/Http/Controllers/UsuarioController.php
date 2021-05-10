@@ -51,6 +51,7 @@ class UsuarioController extends Controller
             'name' => $empleado->nombre . ' ' . $empleado->apellido,
             'email' => $empleado->email,
             'password' => Hash::make($password),
+            'notificaciones' => false,
             'rol_id' => 2,
         ]);
 
@@ -90,7 +91,15 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        if ($request->notificaciones === "on")
+        {
+            $notificaciones = true;
+        } else {
+            $notificaciones = false;
+        }
+
         $user->rol_id = $request->rol;
+        $user->notificaciones = $notificaciones;
 
         $user->save();
 
