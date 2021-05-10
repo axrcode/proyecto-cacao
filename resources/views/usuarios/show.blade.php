@@ -101,6 +101,23 @@
                                         </div>
 
                                         <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="password">
+                                                    Contraseña
+                                                </label>
+
+                                                <input
+                                                    type="password"
+                                                    class="form-control form-control-sm form-control-border"
+                                                    id="password"
+                                                    name="password"
+                                                    value=""
+                                                    autocomplete="off"
+                                                >
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
                                             <div class="form-check">
                                                 <input
                                                     type="checkbox"

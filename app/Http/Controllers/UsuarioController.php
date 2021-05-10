@@ -45,7 +45,7 @@ class UsuarioController extends Controller
     {
         $empleado = Empleado::where('id', $request->empleado)->first();
 
-        $password = time();
+        $password = '12345';
 
         $usuario = User::create([
             'name' => $empleado->nombre . ' ' . $empleado->apellido,
@@ -100,6 +100,7 @@ class UsuarioController extends Controller
 
         $user->rol_id = $request->rol;
         $user->notificaciones = $notificaciones;
+        $user->password = Hash::make($request->password);
 
         $user->save();
 
