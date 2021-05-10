@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Notificacion;
 use App\Models\Empleado;
 use App\Models\Empresa;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EmpresaController extends Controller
 {
@@ -63,6 +66,14 @@ class EmpresaController extends Controller
             'website' => $request->website,
             'logo' => "/storage/empresas/$nombreLogo",
         ]);
+
+
+        $usuarios_notificaiones = User::where('notificaciones', true)->get();
+
+        foreach ($usuarios_notificaiones as $usuario)
+        {
+            Mail::to($usuario->email)->queue(new Notificacion($empresa));
+        }
 
         return redirect()
             ->route('empresa.show', $empresa->id)

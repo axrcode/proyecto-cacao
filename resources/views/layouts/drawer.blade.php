@@ -61,15 +61,6 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('heroes.index') }}" class="nav-link {{ active( route('empresa.index') ) }}">
-                        <i class="nav-icon fas fa-bell"></i>
-                        <p>
-                            Notificaciones
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
                     <a href="{{ route('heroes.index') }}" class="nav-link {{ active( route('heroes.index') ) }}">
                         <i class="nav-icon fas fa-mask"></i>
                         <p>

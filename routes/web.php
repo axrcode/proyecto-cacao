@@ -50,8 +50,6 @@ Route::delete('/usuarios/{user}', 'UsuarioController@destroy')->name('usuario.de
 Route::get('/heroes', 'HeroController@index')->name('heroes.index');
 Route::get('/heroes/{hero}', 'HeroController@show')->name('heroes.show');
 
-/* NOTIFICACIONES */
-Route::get('/notificacion', 'NotificacionController@index')->name('notificacion.index');
 
 
 

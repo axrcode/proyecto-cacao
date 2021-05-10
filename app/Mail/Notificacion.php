@@ -11,14 +11,18 @@ class Notificacion extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject = 'Notificación de Nueva Empresa';
+
+    public $empresa;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($empresa)
     {
-        //
+        $this->empresa = $empresa;
     }
 
     /**
@@ -28,6 +32,6 @@ class Notificacion extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.mensaje-recibido');
     }
 }
