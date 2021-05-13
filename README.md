@@ -10,3 +10,7 @@ Proyecto para prueba práctica de Cacao.gt. Sistema para gestionar empresas y su
 - Migrations
 - Seeders
 
+```md
+composer install
+```
+
